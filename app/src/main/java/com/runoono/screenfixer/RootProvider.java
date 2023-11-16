@@ -12,9 +12,8 @@ public class RootProvider {
         RunAsRoot("exit");
     }
 
-    public static String RunAsRoot(String command)
+    public static void RunAsRoot(String command)
     {
-        String response = "";
         try {
             Process p = Runtime.getRuntime().exec("su");
             DataOutputStream os = new DataOutputStream(p.getOutputStream());
@@ -24,11 +23,10 @@ public class RootProvider {
             os.flush();
             os.close();
 
-            try { p.waitFor(); } catch (InterruptedException e) { Log.d("EXCEPTION", e.toString());}
+            p.waitFor();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        return response;
     }
 
     public static void Remount() {
