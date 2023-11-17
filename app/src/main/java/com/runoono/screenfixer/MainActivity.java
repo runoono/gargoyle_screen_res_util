@@ -36,12 +36,14 @@ public class MainActivity extends AppCompatActivity {
         set_res_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                RootProvider.EnableRoot();
                 RootProvider.RunAsRoot("wm size "+xBox.getText().toString()+"x"+yBox.getText().toString());
             }
         });
         res_sys_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                RootProvider.EnableRoot();
                 RootProvider.RunAsRoot("killall com.android.systemui");
                 int height = displayMetrics.heightPixels;
                 int width = displayMetrics.widthPixels;
@@ -53,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         res_res_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                RootProvider.EnableRoot();
                 RootProvider.RunAsRoot("wm size reset");
                 int height = displayMetrics.heightPixels;
                 int width = displayMetrics.widthPixels;
